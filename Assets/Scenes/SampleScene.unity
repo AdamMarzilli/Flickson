@@ -369,6 +369,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5641976202280558950, guid: 82a50e94232381c409c103283ac62de9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.23137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641976202280558950, guid: 82a50e94232381c409c103283ac62de9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.34117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641976202280558950, guid: 82a50e94232381c409c103283ac62de9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2388341
+      objectReference: {fileID: 0}
     - target: {fileID: 5641976202280558969, guid: 82a50e94232381c409c103283ac62de9, type: 3}
       propertyPath: m_Name
       value: Nathan
