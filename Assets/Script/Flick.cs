@@ -20,6 +20,7 @@ public class Flick : MonoBehaviour
     void Update()
     {
         Swipe();
+
         player.Translate(swipeDir * Time.deltaTime * speed);
     }
 
@@ -33,10 +34,11 @@ public class Flick : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             endSwipePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+            swipeDir = new Vector3(endSwipePos.x - beginSwipePos.x, endSwipePos.y - beginSwipePos.y);
+            swipeDir.Normalize();
         }
 
-        swipeDir = new Vector3(endSwipePos.x - beginSwipePos.x, endSwipePos.y - beginSwipePos.y);
-        swipeDir.Normalize();
     }
     
 }
