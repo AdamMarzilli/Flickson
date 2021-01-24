@@ -59,12 +59,9 @@ public class Player : MonoBehaviour
                 Debug.Log("Game over");
             }
 
+            spawnManager.SpawnNewPlayer();
             Destroy(this.gameObject);
         }
     }
-
-    private void OnDestroy()
-    {
-        spawnManager.SpawnNewPlayer();
-    }
+    
 }
