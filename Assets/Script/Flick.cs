@@ -8,14 +8,8 @@ public class Flick : MonoBehaviour
     Vector2 endSwipePos;
     Vector3 swipeDir;
     Vector3 tempDir;
-    Transform player;
+    GameObject player;
     private float speed = 10f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player").transform;
-    }
 
     // Update is called once per frame
     void Update()
@@ -36,13 +30,20 @@ public class Flick : MonoBehaviour
 
             tempDir = new Vector3(endSwipePos.x - beginSwipePos.x, endSwipePos.y - beginSwipePos.y);
             tempDir.Normalize();
+            Player playerScript = player.gameObject.GetComponent<Player>();
 
-            if (tempDir.y > 0)
+            if (tempDir.y > 0 && !playerScript.inMotion)
             {
                 swipeDir = tempDir;
-                player.GetComponent<Player>().dir = swipeDir;
+                playerScript.dir = swipeDir;
+                playerScript.inMotion = true;
+                
             }
         }
     }
 
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player = newPlayer;
+    }
 }

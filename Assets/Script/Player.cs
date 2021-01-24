@@ -5,8 +5,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Vector3 dir = new Vector3();
+    public string shape = "Circle";
+    public bool inMotion = false;
+    public SpawnManager spawnManager;
+
     private float speed = 10f;
     private Vector3 normal;
+
+    public Player(){}
+
+    public Player(string shape, SpawnManager spawnManager)
+    {
+        this.shape = shape;
+        this.spawnManager = spawnManager;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +30,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         gameObject.transform.Translate(dir * Time.deltaTime * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,5 +45,26 @@ public class Player : MonoBehaviour
             Vector3 newDir = dir - 2f * (Vector3.Dot(dir, normal) * normal);
             dir = newDir;
         }
+
+        if (collision.gameObject.tag == "Shape")
+        {
+            if (collision.gameObject.GetComponent<Shape>().shape == this.shape)
+            {
+                // TODO: Get points or something
+                Debug.Log("Points or something");
+            }
+            else
+            {
+                // TODO: Game over
+                Debug.Log("Game over");
+            }
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        spawnManager.SpawnNewPlayer();
     }
 }
