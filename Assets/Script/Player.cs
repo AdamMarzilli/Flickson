@@ -8,7 +8,10 @@ public class Player : MonoBehaviour
     public string shape = "Circle";
     public bool inMotion = false;
     public SpawnManager spawnManager;
+    public static int maxBounce = 6;
 
+
+    public int bounceCount = 0;
     private float speed = 10f;
     private Vector3 normal;
 
@@ -41,7 +44,14 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Barrier")
         {
+            if (bounceCount >= maxBounce)
+            {
+                spawnManager.SpawnNewPlayer();
+                Destroy(this.gameObject);
+            }
+
             normal = collision.contacts[0].normal;
+            bounceCount++;
             Vector3 newDir = dir - 2f * (Vector3.Dot(dir, normal) * normal);
             dir = newDir;
         }
