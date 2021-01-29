@@ -8,7 +8,7 @@ public class Flick : MonoBehaviour
     Vector2 endSwipePos;
     Vector3 swipeDir;
     Vector3 tempDir;
-    GameObject player;
+    public GameObject player;
     private float speed = 10f;
 
     // Update is called once per frame

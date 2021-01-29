@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     private Vector3 playerSpawn = new Vector3(0.072f, -2.895f, 0f);
     private Vector3 shapeSpawn = new Vector3(- 1.47f, 2.86f, 0f);
     private string[] shapeTypes = { "Circle" };
+    private GameObject[] spawnedShapes = { };
 
     private void Start()
     {
