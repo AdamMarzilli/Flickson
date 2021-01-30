@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
     public string shape = "Circle";
     public bool inMotion = false;
     public SpawnManager spawnManager;
+    public GameManager gameManager;
     public static int maxBounce = 6;
+    private int bounceCount = 1;
 
-
-    public int bounceCount = 0;
     private float speed = 10f;
     private Vector3 normal;
 
@@ -58,19 +58,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Shape")
         {
-            if (collision.gameObject.GetComponent<Shape>().shape == this.shape)
-            {
-                // TODO: Get points or something
-                Debug.Log("Points or something");
-            }
-            else
-            {
-                // TODO: Game over
-                Debug.Log("Game over");
-            }
-
-            spawnManager.SpawnNewPlayer();
-            Destroy(this.gameObject);
+            gameManager.HitGoalShape(collision.gameObject, this.gameObject);
         }
     }
     
