@@ -6,6 +6,8 @@ public class Shape : MonoBehaviour
 {
 
     public string shape = "Circle";
+    public string location;
+
     private SpawnManager spawnManager;
 
     public Shape()
